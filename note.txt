@@ -1,0 +1,74 @@
+DOM：
+	document.getElementsByTagName()
+		-- 在整个文档中查找满足指定标签条件的元素
+	elementObject.getElementsByTagName()
+		-- 在指定的 elementObject 元素后代中查找满足标签条件的元素
+
+	document.getElementsByClassName()
+	elementObject.getElementsByClassName()
+
+	document.getElementsByName()
+
+	document.getElementsByClassName() 是ES5中新增的方法，有浏览器兼容问题
+		如果支持使用，则直接调用；
+		如果不支持使用，则查找所有元素进行遍历，每个元素的类名中是否有待查找类名，如果有，则将对应元素保存起来
+
+		扩展方法：
+			document.querySelector(selector)
+				根据选择器，查找满足选择器条件的第一个元素，支持CSS的选择器
+			document.querySelectorAll(selector)
+				根据选择器，查找满足选择器条件的所有元素，支持CSS的选择器
+
+	获取元素的类名：
+		element.getAttribute("class")
+		element.className
+
+
+	过滤查找：
+		nodeObject.parentNode -- 查找父节点
+		nodeObject.childNodes -- 所有孩子节点（元素+文本）
+		nodeObject.children -- 所有孩子元素节点
+		nodeObject.firstChild -- 第一个孩子(元素或文本)
+		nodeObject.firstElementChild -- 第一个孩子元素
+		nodeObject.lastChild -- 最后一个孩子
+		nodeObject.previousSibling -- 前一个兄弟(同辈)节点
+		nodeObject.previousElementSibling -- 前一个兄弟(同辈)元素节点
+		nodeObject.nextSibling -- 后一个兄弟节点
+
+	节点属性：
+		node.nodeType
+			-- 节点类型
+			返回数字：
+				1 -- 元素节点
+				2 -- 属性节点
+				3 -- 文本节点
+		node.nodeName
+			-- 节点名称
+				文本节点：固定为 "#text"
+				元素节点：HTML文档中，返回标签名大写状态的字符串内容
+		node.nodeValue
+			-- 节点值
+				文本节点：文本节点的内容本身
+				元素节点：固定为 null
+
+	节点克隆：
+		node.cloneNode(bool)
+			-- bool 为 布尔类型 的参数
+				true : 克隆节点本身及后代节点
+				false : 只克隆节点本身
+				默认（不传递参数）取 false
+
+CSSOM
+	获取CSS
+		element.style
+			-- 返回 CSSStyleDeclaration 对象，能够获取行内样式中设置的各CSS属性值
+
+		window.getComputedStyle(element)
+			-- 返回 CSSStyleDeclaration 对象，是经过计算最终的样式规则，是指定元素正在起作用的CSS样式
+
+		element.currentStyle
+			-- IE9之前浏览器支持
+				获取正在起作用的CSS样式
+	设置CSS
+		通常设置行内样式
+			element.style.<attrName> = attrValue;

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<span id="box" class="demo">span#box</span>
+	<div id="box1">div#box</div>
+	<div id="container">
+		div#container
+		<div class="test inner demo">div.inner1</div>
+		<span class="demo inner">span.inner1</span>
+		<div class="inner">div.inner2</div>
+		<span class="inner">span.inner2</span>
+	</div>
+
+	<script src="js/tools.js"></script>
+	<script>
+		/*var _element = document.getElementById("box");
+		console.log(_element);
+		var _elements = document.getElementsByTagName("span");
+		console.log(_elements);
+
+		var _container = document.getElementById("container");
+		var _elements = _container.getElementsByTagName("span");
+		console.log(_elements);
+
+		var _elements = document.getElementsByClassName("inner")
+		console.log(_elements)
+
+		var _elements = getElementsByClassName("demo");
+		console.log(_elements);
+
+		function byId(id) {
+			return document.getElementById(id);
+		}
+
+		function byTag(tag) {
+			return document.getElementsByTagName(tag);
+		}
+
+		var _element = byId("box")
+		console.log(_element);*/
+
+		var _container = $("#container");
+		var _element = $(".demo", _container)
+		console.log(_element);
+	</script>
+
+</body>
+</html>

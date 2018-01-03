@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- <title>Document</title> -->
+</head>
+<body>
+	<input type="text" id="deadline" value="2018-01-01T00:00:00">
+	<button id="btn">倒计时</button>
+	<input type="text" id="result">
+
+	<script src="js/tools.js"></script>
+	<script>
+		console.log("前")
+		var timer;
+		$("#btn").onclick = function(){
+			clearInterval(timer);
+			// 获取计时终点值
+			var _deadline = $("#deadline").value;
+			// 将获取计时终点字符串值转换成表示时间的毫秒值
+			var mills = Date.parse(_deadline);
+			// 启动计时器，计时
+			timer = setInterval(function(){
+				// 计算计时终点与当前时间毫秒差
+				// var diff = mills - new Date().getTime();
+				// var diff = mills - new Date().valueOf();
+				// var diff = mills - new Date();
+				var diff = mills - Date.now();
+				// 将毫秒差换算为总秒数
+				var seconds = Math.ceil(diff / 1000);
+				// 将总秒数换算为天时分秒     37
+				var second = seconds % 60, // 秒
+					minute = Math.floor(seconds / 60) % 60, // 分
+					hour = Math.floor(seconds / (60 * 60)) % 24, // 时
+					day = Math.floor(seconds / (24 * 60 * 60)); // 天
+				// 显示
+				var _result = day+"天"+hour+"时"+minute+"分"+second+"秒";
+				$("#result").value = _result;
+
+				// 判断是否到达计时终点值
+				if (seconds === 0) {
+					clearInterval(timer);
+				}
+			}, 1000);
+		}
+
+		console.log("后")
+	</script>
+</body>
+</html>
